@@ -134,7 +134,7 @@ A curated view — not everything I've touched, just what I'd defend in a code r
 
 ## `//` contact
 
-Open to **consulting, contract, and full-time work** in game security, anti-cheat engineering, or casino fraud / compliance tooling.
+Open to **consulting, contract, and full-time work** in game security, anti-cheat engineering, casino fraud / compliance tooling, and any form of **automation or spoofing**.
 
 **Have a project in mind?** Start here — it takes 2 minutes:
 
