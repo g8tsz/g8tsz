@@ -1,12 +1,6 @@
 <div align="center">
 
 <a href="https://github.com/g8tsz">
-  <img src="./assets/banner.svg" alt="g8tsz — developer specializing in automation & anti-cheat" width="100%" />
-</a>
-
-<br />
-
-<a href="https://github.com/g8tsz">
   <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=24&duration=2800&pause=900&color=8B5CF6&center=true&vCenter=true&multiline=true&width=720&height=110&lines=%3E+root%40g8tsz%3A~%24+whoami;%3E+breaking+things+so+they+can%27t+be+broken.;%3E+casino+floors%2C+game+memory%2C+kyc+pipelines.;%3E+access+denied.+access+granted.+%F0%9F%94%93" alt="typing animation" />
 </a>
 
