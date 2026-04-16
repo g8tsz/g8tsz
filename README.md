@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://github.com/g8tsz">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=260&section=header&text=g8tsz&fontSize=90&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=-_-%20%20%C2%B7%20%20reverse%20engineer%20%C2%B7%20anti-cheat%20%C2%B7%20fraud%20hunter&descAlignY=60&descSize=18" alt="header" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=260&section=header&text=g8tsz&fontSize=90&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=developer%20specializing%20in%20automation%20%26%20anti-cheat&descAlignY=60&descSize=18" alt="header" />
 </a>
 
 <br />
