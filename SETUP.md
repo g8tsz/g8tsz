@@ -1,39 +1,91 @@
-# How to publish this profile
+# Profile repo — setup & maintenance
 
-GitHub auto-renders a README from a repo named **exactly** the same as your username. So you need a repo called `g8tsz/g8tsz`.
+GitHub auto-renders a README from a repo named **exactly** the same as your
+username. This repo is `g8tsz/g8tsz`, so its `README.md` shows up at the top of
+https://github.com/g8tsz.
 
-## Option A — fastest (web UI, 60 seconds)
+---
 
-1. Go to https://github.com/new
-2. Repository name: `g8tsz` (yes, same as your username — GitHub will show a "special" banner)
-3. Set it **Public**, check **Add a README**, create.
-4. Open the new `README.md`, click the pencil, paste the contents of `README.md` from this folder, commit.
-5. Create `.github/workflows/snake.yml` in that repo, paste the contents from this folder, commit.
-6. Go to the repo's **Actions** tab → run the `generate contribution snake` workflow once manually. After ~30s an `output` branch will be created with the snake SVGs — the README references them automatically.
-7. Visit https://github.com/g8tsz — your new profile is live.
+## 1. First-time publish
 
-## Option B — via terminal (if you want git locally)
+Already done on this account. If you ever have to recreate it from scratch:
+
+1. https://github.com/new → name it `g8tsz` → public → "add a README".
+2. Replace that README with this folder's `README.md`.
+3. Commit the rest of this folder (`.github/`, `scripts/`, `.githooks/`,
+   `.gitattributes`, `.editorconfig`, `SETUP.md`).
+4. Open the **Actions** tab, run `generate contribution snake` manually once.
+   This creates an `output` branch with `github-snake.svg` /
+   `github-snake-dark.svg`; the README references them directly from that
+   branch.
+
+---
+
+## 2. Enable the pre-commit hook (recommended, one command)
 
 ```bash
-cd C:\Users\nickh\g8tsz-profile
-git init
-git add .
-git commit -m "feat: profile readme"
-git branch -M main
-gh auth login            # one-time
-gh repo create g8tsz --public --source=. --push
+git config core.hooksPath .githooks
 ```
 
-Then trigger the snake workflow once from the Actions tab.
+That's it. From now on, `git commit` will refuse to stage any text file that
+contains an XML-invalid control byte (0x00–0x1F except TAB/LF/CR). This is the
+same class of bug that broke the banner SVG once — a stray `0x14` where an
+em-dash should have been.
 
-## Optional personalization
+CI enforces the same check on every push / PR via `.github/workflows/validate.yml`,
+so even if a contributor forgets to enable the hook, bad bytes never reach
+`main`.
 
-Open `README.md` and tweak:
+---
 
-- **email / x / discord links** at the bottom (currently placeholders like `hello@g8tsz.dev`)
-- **the `whoami` code block** — change `role`, `focus`, `currently` to match what you're actually doing
-- **color theme** — every `&theme=tokyonight` and `&color=8b5cf6` can be swapped. Popular alternates:
-  - `dracula`, `radical`, `catppuccin_mocha`, `synthwave`, `gruvbox`
-- **tech stack icons** — edit the `skillicons.dev/icons?i=...` list. Full list at https://skillicons.dev
+## 3. Third-party services this README depends on
 
-That's it. The README uses nothing but public GitHub/Vercel services — no tokens, no self-hosting.
+Ordered from most to least reliable. If one of these goes down, the README
+keeps working — only that specific block will show as a broken image.
+
+| Block                    | Service                                      | Reliability | Replace with if it dies                          |
+| ------------------------ | -------------------------------------------- | ----------- | ------------------------------------------------ |
+| follower / stars badges  | `img.shields.io`                             | very high   | n/a, shields.io is the reference implementation  |
+| tech-stack icons         | `skillicons.dev`                             | high        | static PNGs committed to `assets/`               |
+| typing animation         | `readme-typing-svg.demolab.com`              | medium      | static text headline, or generate nightly        |
+| repo-pin cards           | `github-readme-stats.vercel.app/api/pin`     | medium      | plain markdown links                             |
+| stats / top-langs card   | `github-readme-stats.vercel.app`             | medium      | generate nightly via GH Action + commit SVG      |
+| trophies                 | `github-profile-trophy.vercel.app`           | medium-low  | drop the block, or self-host the SVG nightly     |
+| contribution snake       | **self-hosted** on `output` branch           | very high   | regenerated nightly by `snake.yml` — no external |
+
+Deliberately **removed** (too fragile or low-signal):
+
+- `github-readme-streak-stats.herokuapp.com` — Heroku free tier is gone, goes
+  to sleep / times out.
+- `komarev.com/ghpvc` — profile-views vanity counter, rate-limits.
+- `readme-jokes.vercel.app` — hobby Vercel project, frequent 502s.
+- `github-readme-activity-graph.vercel.app` — duplicates what the snake already
+  shows.
+- `capsule-render.vercel.app` — the service whose outage started the whole
+  banner saga.
+
+---
+
+## 4. Known loose ends
+
+- **`Casino-Fruad-Cheating-tracker-`** — the pinned repo name has a typo
+  ("Fruad"). The pin card renders the repo name verbatim, so the only way to
+  fix the spelling is to rename the repo on GitHub:
+  `Settings → General → Repository name → Casino-Fraud-Cheating-tracker`.
+  GitHub automatically sets up a redirect from the old URL, and this README's
+  pin URL will need a matching update.
+- **Discord badge** — the link to `https://discord.com/users/.eats.` was
+  removed because Discord user URLs require the numeric snowflake ID, not the
+  username. The badge is kept as a non-link display. If you want it clickable,
+  replace `.eats.` in the badge with the real 18-digit user ID and wrap in
+  `<a href="https://discord.com/users/<id>">…</a>`.
+
+---
+
+## 5. Theming
+
+Everywhere `&theme=tokyonight` and the hex `8b5cf6` appear, you can swap for
+any of: `dracula`, `radical`, `catppuccin_mocha`, `synthwave`, `gruvbox`.
+
+Skillicon set: full list at https://skillicons.dev — keep `perline` at 8 or
+below so the row doesn't overflow on the mobile GitHub app.

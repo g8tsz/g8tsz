@@ -1,0 +1,24 @@
+# Normalize line endings on check-in. Prevents editor-specific weirdness
+# (especially PowerShell Out-File/Set-Content) from corrupting files.
+* text=auto eol=lf
+
+# Treat SVG / YAML / Markdown as text explicitly so git never mis-detects them
+# as binary on Windows.
+*.svg        text eol=lf
+*.yml        text eol=lf
+*.yaml       text eol=lf
+*.md         text eol=lf
+*.json       text eol=lf
+*.py         text eol=lf
+*.sh         text eol=lf
+
+# Shell scripts must stay LF even if someone edits them on Windows.
+*.sh         text eol=lf
+
+# Actual binary files — do not touch.
+*.png        binary
+*.jpg        binary
+*.jpeg       binary
+*.gif        binary
+*.webp       binary
+*.ico        binary

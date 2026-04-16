@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+# Pre-commit hook: block commits that introduce XML-invalid control bytes
+# into text files. Enable with:
+#
+#     git config core.hooksPath .githooks
+#
+# (Run that once per clone; it is stored per-repo in .git/config.)
+set -e
+
+if ! command -v python3 >/dev/null 2>&1 && ! command -v python >/dev/null 2>&1; then
+  echo "pre-commit: python not on PATH, skipping control-char check" >&2
+  exit 0
+fi
+
+PY=python3
+command -v python3 >/dev/null 2>&1 || PY=python
+
+"$PY" scripts/check_xml_control_chars.py "$(git rev-parse --show-toplevel)"

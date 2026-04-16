@@ -1,0 +1,67 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  control-chars:
+    name: reject XML-invalid control bytes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python scripts/check_xml_control_chars.py "$GITHUB_WORKSPACE"
+
+  svg-well-formed:
+    name: every SVG parses as XML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: validate SVGs on current branch
+        shell: bash
+        run: |
+          set -e
+          mapfile -t svgs < <(git ls-files '*.svg')
+          if [ "${#svgs[@]}" -eq 0 ]; then
+            echo "no SVGs tracked on this branch"
+            exit 0
+          fi
+          python scripts/validate_svgs.py "${svgs[@]}"
+
+      - name: validate SVGs on output branch (snake artifacts)
+        shell: bash
+        run: |
+          set -e
+          if ! git ls-remote --exit-code --heads origin output >/dev/null 2>&1; then
+            echo "no output branch on remote, skipping"
+            exit 0
+          fi
+          git fetch --no-tags --depth=1 origin output
+          mapfile -t svgs < <(git ls-tree -r --name-only FETCH_HEAD | grep -E '\.svg$' || true)
+          if [ "${#svgs[@]}" -eq 0 ]; then
+            echo "no SVGs on output branch"
+            exit 0
+          fi
+          mkdir -p /tmp/output-svgs
+          copies=()
+          for f in "${svgs[@]}"; do
+            dest="/tmp/output-svgs/$(echo "$f" | tr '/' '_')"
+            git show "FETCH_HEAD:$f" > "$dest"
+            copies+=("$dest")
+          done
+          python scripts/validate_svgs.py "${copies[@]}"
