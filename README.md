@@ -169,16 +169,10 @@ const g8tsz = {
 ### `//` signal
 
 <a href="https://github.com/g8tsz">
-  <img src="https://img.shields.io/badge/github-0d1117?style=for-the-badge&logo=github&logoColor=8b5cf6" />
+  <img src="https://img.shields.io/badge/github-%40g8tsz-0d1117?style=for-the-badge&logo=github&logoColor=8b5cf6&labelColor=0d1117" />
 </a>
-<a href="mailto:hello@g8tsz.dev">
-  <img src="https://img.shields.io/badge/email-0d1117?style=for-the-badge&logo=gmail&logoColor=8b5cf6" />
-</a>
-<a href="https://x.com/g8tsz">
-  <img src="https://img.shields.io/badge/x_%2F_twitter-0d1117?style=for-the-badge&logo=x&logoColor=8b5cf6" />
-</a>
-<a href="https://discord.com/users/g8tsz">
-  <img src="https://img.shields.io/badge/discord-0d1117?style=for-the-badge&logo=discord&logoColor=8b5cf6" />
+<a href="https://discord.com/users/.eats.">
+  <img src="https://img.shields.io/badge/discord-.eats.-0d1117?style=for-the-badge&logo=discord&logoColor=8b5cf6&labelColor=0d1117" />
 </a>
 
 <br/><br/>
