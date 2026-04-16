@@ -10,6 +10,7 @@
   <a href="#-featured-work"><img src="https://img.shields.io/badge/-featured_work-0d1117?style=flat-square&labelColor=0d1117&color=8b5cf6" alt="jump to featured work section" /></a>
   <a href="#-currently"><img src="https://img.shields.io/badge/-currently-0d1117?style=flat-square&labelColor=0d1117&color=8b5cf6" alt="jump to currently section" /></a>
   <a href="#-contact"><img src="https://img.shields.io/badge/-contact-0d1117?style=flat-square&labelColor=0d1117&color=8b5cf6" alt="jump to contact section" /></a>
+  <a href="https://tally.so/r/MeJoOl"><img src="https://img.shields.io/badge/-hire_me-0d1117?style=flat-square&labelColor=0d1117&color=a78bfa" alt="open the project intake form" /></a>
 </p>
 
 <p>
@@ -134,6 +135,14 @@ A curated view — not everything I've touched, just what I'd defend in a code r
 ## `//` contact
 
 Open to **consulting, contract, and full-time work** in game security, anti-cheat engineering, or casino fraud / compliance tooling.
+
+**Have a project in mind?** Start here — it takes 2 minutes:
+
+<a href="https://tally.so/r/MeJoOl">
+  <img src="https://img.shields.io/badge/%E2%86%92_start_a_project-8b5cf6?style=for-the-badge&labelColor=0d1117" alt="Start a project — fill out the intake form" />
+</a>
+
+<br/><br/>
 
 <a href="https://github.com/g8tsz">
   <img src="https://img.shields.io/badge/github-%40g8tsz-0d1117?style=for-the-badge&logo=github&logoColor=8b5cf6&labelColor=0d1117" alt="GitHub profile: @g8tsz" />
