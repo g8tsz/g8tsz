@@ -28,14 +28,31 @@
 
 ```ts
 const g8tsz = {
-  alias:      "-_-",
-  role:       "reverse engineer & security tinkerer",
-  focus:      ["anti-cheat", "game overlays", "casino fraud detection", "kyc"],
-  stack:      ["C", "C++", "TypeScript", "JavaScript", "assembly", "a little chaos"],
-  currently:  "reading other people's memory so they can't read mine",
-  philosophy: "if it runs, it can be understood. if it can be understood, it can be broken.",
-  coffee:     Infinity,
-};
+  alias:       "-_-",
+  role:        "reverse engineer · security tinkerer · automation hand",
+  focus: [
+    "anti-cheat",
+    "game overlays & memory",
+    "casino fraud detection",
+    "kyc / aml pipelines",
+    "automation & tooling",
+  ],
+  stack: {
+    low_level:  ["C", "C++", "assembly"],
+    high_level: ["Python", "Java", "TypeScript", "JavaScript"],
+    ops:        ["automation", "scripting", "ci/cd", "a little chaos"],
+  },
+  currently:   "reading other people's memory so they can't read mine",
+  learning:    "every lock, from the inside",
+  philosophy:  "if it runs, it can be understood. if it can be understood, it can be broken.",
+  rules: [
+    "0. trust nothing — especially the client",
+    "1. read the binary, not the docs",
+    "2. automate the boring stuff, break the interesting stuff",
+  ],
+  uptime:      "98.6%",
+  coffee:      Infinity,
+} as const;
 ```
 
 ---
@@ -45,16 +62,17 @@ const g8tsz = {
 ### `//` arsenal
 
 <p>
-  <img src="https://skillicons.dev/icons?i=c,cpp,cs,rust,go,ts,js,python,nodejs,react,html,css,tailwind&perline=13" />
+  <img src="https://skillicons.dev/icons?i=c,cpp,cs,rust,python,java,ts,js,nodejs,react,html,css,tailwind&perline=13" />
 </p>
 <p>
-  <img src="https://skillicons.dev/icons?i=linux,bash,powershell,docker,git,github,vscode,visualstudio,postgres,mongodb,redis,vercel,cloudflare&perline=13" />
+  <img src="https://skillicons.dev/icons?i=linux,bash,powershell,docker,git,github,githubactions,selenium,vscode,visualstudio,postgres,mongodb,redis&perline=13" />
 </p>
 
 <br/>
 
 <img src="https://img.shields.io/badge/reverse_engineering-ff3860?style=for-the-badge&logo=ghidra&logoColor=white" />
 <img src="https://img.shields.io/badge/anti--cheat-7c3aed?style=for-the-badge&logo=shield&logoColor=white" />
+<img src="https://img.shields.io/badge/automation-f59e0b?style=for-the-badge&logo=githubactions&logoColor=white" />
 <img src="https://img.shields.io/badge/fraud_detection-10b981?style=for-the-badge&logo=verizon&logoColor=white" />
 <img src="https://img.shields.io/badge/kyc/aml-0ea5e9?style=for-the-badge&logo=stripe&logoColor=white" />
 <img src="https://img.shields.io/badge/game_hacking-ef4444?style=for-the-badge&logo=unrealengine&logoColor=white" />
