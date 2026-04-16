@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://github.com/g8tsz">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=260&section=header&text=g8tsz&fontSize=90&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=developer%20specializing%20in%20automation%20%26%20anti-cheat&descAlignY=60&descSize=18" alt="header" />
+  <img src="./assets/banner.svg" alt="g8tsz — developer specializing in automation & anti-cheat" width="100%" />
 </a>
 
 <br />
