@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+# commit-msg hook: strip auto-injected trailers that the repo owner does not
+# want in history (e.g. "Made-with: Cursor").
+#
+# Enable with: git config core.hooksPath .githooks
+set -e
+msg_file="$1"
+[ -f "$msg_file" ] || exit 0
+
+if ! command -v python3 >/dev/null 2>&1 && ! command -v python >/dev/null 2>&1; then
+  exit 0
+fi
+PY=python3
+command -v python3 >/dev/null 2>&1 || PY=python
+
+"$PY" - "$msg_file" <<'PY'
+import re
+import sys
+
+path = sys.argv[1]
+with open(path, "r", encoding="utf-8", errors="replace") as f:
+    text = f.read()
+
+# Remove any standalone trailer line starting with "Made-with:" (case-insensitive).
+lines = [ln for ln in text.splitlines()
+         if not re.match(r"^\s*made-with\s*:", ln, re.I)]
+while lines and not lines[-1].strip():
+    lines.pop()
+
+with open(path, "w", encoding="utf-8", newline="\n") as f:
+    f.write("\n".join(lines) + "\n")
+PY

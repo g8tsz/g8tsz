@@ -27,10 +27,15 @@ Already done on this account. If you ever have to recreate it from scratch:
 git config core.hooksPath .githooks
 ```
 
-That's it. From now on, `git commit` will refuse to stage any text file that
-contains an XML-invalid control byte (0x00–0x1F except TAB/LF/CR). This is the
-same class of bug that broke the banner SVG once — a stray `0x14` where an
-em-dash should have been.
+Two hooks are installed:
+
+1. **`pre-commit`** — refuses to stage any text file that contains an
+   XML-invalid control byte (0x00–0x1F except TAB/LF/CR). Same class of bug
+   that broke the banner SVG once (a stray `0x14` where an em-dash should
+   have been).
+2. **`commit-msg`** — strips any `Made-with: …` trailer that editor
+   integrations (e.g. the Cursor shell wrapper) append automatically, so
+   history stays the way the repo owner wants it.
 
 CI enforces the same check on every push / PR via `.github/workflows/validate.yml`,
 so even if a contributor forgets to enable the hook, bad bytes never reach
