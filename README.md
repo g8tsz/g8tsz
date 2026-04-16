@@ -144,5 +144,4 @@ Open to **consulting, contract, and full-time work** in game security, anti-chea
 
 <div align="center">
   <img src="./assets/footer.svg" alt="" width="100%" />
-  <sub><code>// end of file</code></sub>
 </div>
